@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minha Galeria</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: #0a0a0c;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    padding: 40px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Cabeçalho Minimalista */
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: aparecer 1s ease both;
+  }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, #ff6b9d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+  }
+
+  header p {
+    color: #8f8fa3;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* Grade da Galeria */
+  .gallery {
+    column-count: 3;
+    column-gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  @media (max-width: 900px) { .gallery { column-count: 2; } }
+  @media (max-width: 600px) { .gallery { column-count: 1; } }
+
+  .foto-card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background-color: #17171f;
+    /* Animação de entrada suave */
+    animation: aparecer 1s ease both;
+    animation-delay: calc(var(--i) * 0.15s);
+  }
+
+  .foto-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .foto-card:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0%) contrast(1.1);
+  }
+
+  /* Efeito de brilho sutil ao passar o mouse */
+  .foto-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    border-radius: 16px;
+    pointer-events: none;
+    transition: box-shadow 0.3s;
+  }
+
+  .foto-card:hover::after {
+    box-shadow: inset 0 0 0 1px rgba(255,107,157,0.4);
+  }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Rodapé */
+  footer {
+    margin-top: 80px;
+    color: #555566;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Galeria</h1>
+  <p>Design & Fotografia</p>
+</header>
+
+<main class="gallery">
+  <!-- 
+    Para usar suas fotos, renomeie os arquivos para foto1.jpg, foto2.jpg...
+    e certifique-se de que estão na mesma pasta deste arquivo HTML.
+    Se usar Base64, substitua o src="foto1.jpg" pelo código gigante.
+  -->
+  
+  <figure class="foto-card" style="--i: 1">
+    <img src="foto1.jpg" alt="Foto 1" loading="lazy">
+  </figure>
+
+  <figure class="foto-card" style="--i: 2">
+    <img src="foto2.jpg" alt="Foto 2" loading="lazy">
+  </figure>
+
+  <figure class="foto-card" style="--i: 3">
+    <img src="foto3.jpg" alt="Foto 3" loading="lazy">
+  </figure>
+
+  <figure class="foto-card" style="--i: 4">
+    <img src="foto4.jpg" alt="Foto 4" loading="lazy">
+  </figure>
+
+  <figure class="foto-card" style="--i: 5">
+    <img src="foto5.jpg" alt="Foto 5" loading="lazy">
+  </figure>
+
+</main>
+
+<footer>
+  © 2024 — Todos os direitos reservados
+</footer>
+
+</body>
+  </html>
